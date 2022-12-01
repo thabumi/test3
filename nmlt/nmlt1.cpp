@@ -1,41 +1,49 @@
-#include <bits/stdc++.h>
+#include <iostream>
+
 
 using namespace std;
-
 int main() {
+
     ios::sync_with_stdio(0);
     cin.tie(0);
-    string s;
-    cin >> s;
-    vector<pair<long long, char>> v;
-    int cnt = 1;
-    for (int i = 1; i < s.size(); i++) {
-        if (s[i] != s[i - 1]) {
-            v.push_back({cnt, s[i - 1]});
-            cnt = 1;
-        }
-        else {
-            cnt++;
-        }
-    }
-    if (cnt) {
-        v.push_back({cnt, s[s.size() - 1]});
-    }
-//    for (auto t : v) {
-//        cout << t << " ";
+    long long n = 10000000;
+    double sum = 0;
+    for (long long i = 1; i <= n; i++) {
+    	sum += 1.0 * n / (n * n + i * i);
+	}
+	cout << sum;
+	
+//   
+//    cin >> s;
+//    vector<pair<long long, char>> v;
+//    int cnt = 1;
+//    for (int i = 1; i < s.size(); i++) {
+//        if (s[i] != s[i - 1]) {
+//            v.push_back({cnt, s[i - 1]});
+//            cnt = 1;
+//        }
+//        else {
+//            cnt++;
+//        }
 //    }
-    long long res = 0;
-    for (int i = 0; i < v.size(); i++) {
-        res += (v[i].first >= 2);        
-    }
-    res += 1LL * v.size() * (v.size() - 1) / 2;
-    for (int i = 1; i < v.size() - 1; i++) {
-        if (v[i].first == 1 && v[i - 1].second == v[i + 1].second) {
-            res--;
-        }
-    }
-    cout << res;
-    return 0;
+//    
+//    if (cnt) {
+//        v.push_back({cnt, s[s.size() - 1]});
+//    }
+//    //v[0]={2, a} v[1] = {1, c} v[2] = {1, a}...
+//    long long res = 0;
+//    for (int i = 0; i < v.size(); i++) {
+//        res += (v[i].first >= 2);        
+//    }
+//    // k * (k-1) / 2
+//    res += 1LL * v.size() * (v.size() - 1) / 2;
+//    for (int i = 1; i < v.size() - 1; i++) {
+//        if (v[i].first == 1 && v[i - 1].second == v[i + 1].second) {
+//            res--;
+//        }
+//    }
+//    cout << res;
+//    return 0;
 }
 
 //#include <bits/stdc++.h>

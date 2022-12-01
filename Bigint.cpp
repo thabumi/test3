@@ -347,12 +347,60 @@ struct bigint {
 };
  
 int main() {
-	int n;
-	cin >> n;
-	bigint r(1);
-	for (int i = 1; i <= n; i++) {
-		r *= i;
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	int N, A;
+	while (cin >> N >> A) {
+		bigint n = N;
+		bigint a = A;
+		bigint x = 0;
+		bigint y = 1;
+		if (n == 0) {
+			cout << x;
+		}
+		else if (n == 1) {
+			cout << y;
+		}
+		else {
+			for (int i = 2; i <= N; i++) {
+				bigint t = y * a + x;
+				x = y;
+				y = t;
+			}
+//			int cnt = 0;
+//			vector<int> v = y.a;
+			long long k = y.a[y.a.size() - 1];
+//			cout << y << '\n';
+			string s = to_string(k);
+//			cout << s << '\n';
+			int cnt = 5;
+			for (int i = 0; i < min(5, (int)s.size()); i++) {
+				cout << s[i];
+				cnt--;
+			}
+			if (cnt) {
+				k = y.a[y.a.size() - 2];
+				string l = to_string(k);
+				while (l.size() < 9) {
+					l = '0' + l;
+				}
+//				cout << l << '\n';
+				int i = 0;
+				while (cnt) {
+					cout << l[i++];
+					cnt--;
+				}
+			}
+//			for (int i = 0; i < min(5, (int)y.a.size()); i++) {
+//				cout << (y.a)[i];
+//				cnt++;
+//				if (cnt == 5) {
+//					break;
+//				}
+//			}
+			cout << '\n';
+		}
 	}
-	cout << r;
+	
 	return 0;
 }

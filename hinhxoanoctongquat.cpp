@@ -8,8 +8,8 @@ void run_case(){
 	cin>>n>>m;
 	vector <int> v(n*m+1);
 	for(int i=1;i<=n*m;i++){
-		cin>>v[i];
-//		v[i] = i;
+//		cin>>v[i];
+		v[i] = i;
 	}
 	
 	sort(v.begin()+1,v.end());// sap xep thu tu

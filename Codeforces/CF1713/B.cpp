@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+ 
+using namespace std;
+
+void run_case() {
+	int n;
+	cin >> n;
+	long long a[n];
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	vector<long long> v;
+	for (int i = 0; i < n; i++) {
+		if (v.empty() || v.back() != a[i]) {
+			v.push_back(a[i]);
+		}
+	}
+	int m = v.size();
+	for (int i = 1; i < m - 1; i++) {
+		if (v[i] < v[i - 1] && v[i] < v[i + 1]) {
+			cout << "NO\n";
+			return;
+		}
+	}
+	cout << "YES\n";
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+//	freopen("input.txt", "r", stdin);
+//	freopen("output.txt", "w", stdout);
+	int t;
+	t = 1;
+	cin >> t;
+	for (int i = 1; i <= t; i++) {
+//		cout << "Case #" << i << ": ";
+		run_case();
+	}
+	return 0;	
+}

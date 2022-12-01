@@ -1,39 +1,45 @@
-#include<iostream>
-
+#include <bits/stdc++.h>
+ 
 using namespace std;
-string toString(int n){
-	string s = "";
-	while (n > 0){
-		s = char(n % 10 + '0') + s;
-		n /= 10;
-	}
-	return s;
-}
-string lineEncoding(string s)
-{
-    int count=1;
-    int i=1;
-    string news="";
-    while(i<s.size()){
-        if(s[i]==s[i-1]){
-            count++;
-            i++;
-        }else{
-            news=news+toString(count)+s[i-1];
-            count=1;
-            i++;
-        }
-    }
-    news=news+toString(count)+s[s.size()-1];
-    for(int i=0;i<s.size();i++){
-        if(news[i]=='1'){
-            news.erase(i,1);
-        }
-    }
-    return news;    
-}
 
-int main() {
-	cout<<lineEncoding("");
-	return 0;
+void run_case() {
+	int n, m;
+	cin >> n >> m;
+	int a[n];
+	for (int i = 0; i < n; i++) {
+		cin >> a[i];
+	}
+	set<int> s;
+	for (int i = 0; i < n; i++) {
+		s.insert(i);
+	}
+	
+	for (int i = 0; i < m; i++) {
+		int x;
+		cin >> x;
+		--x;
+		auto it = s.find(x);
+		if (it != s.end()) {
+			s.erase(s.find(x));
+		}
+		
+		for (auto t : s) {
+			cout << a[t] << " ";
+		}
+		cout << '\n';
+	}
+}
+int32_t main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+//	freopen("input.txt", "r", stdin);
+//	freopen("output.txt", "w", stdout);
+	int t;
+	t = 1;
+//	cin >> t;
+	for (int i = 1; i <= t; i++) {
+//		cout << "Case #" << i << ": ";
+		run_case();
+	}
+	return 0;	
 }
